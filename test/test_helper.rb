@@ -5,7 +5,10 @@ require "minitest/reporters"
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+  include ApplicationHelper
+  include UsersHelper
 
   # Returns true if a test user is logged in.
   def is_logged_in?
@@ -27,8 +30,10 @@ class ActiveSupport::TestCase
 
   private
 
-    # Returns true inside an integration test.
-    def integration_test?
-      defined?(post_via_redirect)
-    end
+  # Returns true inside an integration test.
+  def integration_test?
+    defined?(post_via_redirect)
+  end
+
+  # Add more helper methods to be used by all tests here...
 end
