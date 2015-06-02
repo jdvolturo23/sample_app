@@ -80,14 +80,14 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'https://julia-sample-app.herokuapp.com/'
-  config.action_mailer.default_url_options = { host: host }
+  host = 'http://rails-tutorial-jdvolturo23.c9.io'
+  config.action_mailer.default_url_options = { :host => 'http://rails-tutorial-jdvolturo23.c9.io' }
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.sendgrid.net',
       :port           => '587',
       :authentication => :plain,
-      :user_name      => ENV['SENDGRID_USERNAME'],
-      :password       => ENV['SENDGRID_PASSWORD'],
+      :user_name      => ENV['app36915653@heroku.com'],
+      :password       => ENV['6pqt7hcg4223'],
       :domain         => 'heroku.com',
       :enable_starttls_auto => true
   }
