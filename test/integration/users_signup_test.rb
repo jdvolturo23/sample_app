@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
 
   def setup
     ActionMailer::Base.deliveries.clear
@@ -12,20 +9,23 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "invalid signup information" do
     get signup_path
     assert_no_difference 'User.count' do
-      post users_path, user: {name: "", email: "user@invalid",
-                             password:              "foo",
-                             password_confirmation: "bar"}
+      post users_path, user: { name:  "",
+                               email: "user@invalid",
+                               password:              "foo",
+                               password_confirmation: "bar" }
     end
     assert_template 'users/new'
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
   end
 
   test "valid signup information with account activation" do
     get signup_path
-    assert_difference "User.count", 1 do
-      post users_path, user: {name:  "Example User",
-                                           email: "user@example.com",
-                                           password:              "password",
-                                           password_confirmation: "password"}
+    assert_difference 'User.count', 1 do
+      post users_path, user: { name:  "Example User",
+                               email: "user@example.com",
+                               password:              "password",
+                               password_confirmation: "password" }
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
     user = assigns(:user)
@@ -46,56 +46,4 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert is_logged_in?
   end
-
-  test "error messages" do
-    get signup_path
-    assert_no_difference 'User.count' do
-      post users_path, user: {name:  "",
-                             email: "user@invalid",
-                             password:              "foo",
-                             password_confirmation: "bar"}
-    end
-    assert_template 'users/new'
-    assert_select 'div#error_explanation ul li:first-of-type', "Name can't be blank"
-    assert_select 'div#error_explanation ul li:last-of-type', "Password is too short (minimum is 6 characters)"
-  end
-
-  test 'flash greeting' do
-    get root_path
-    assert_difference 'User.count', 1 do
-      post_via_redirect users_path, user: { name:  "Exampled User",
-                            email: "exampleuser1@example.com",
-                            password:              "password",
-                            password_confirmation: "password" }
-    end
-    #assert_template 'users/show'
-    assert_not flash.nil?
-  end
-
-  test "don't show page for non-activated users" do
-    get signup_path
-    post users_path, user: {name: "New User", email: "user@valid.com",
-                            password:              "foobar",
-                            password_confirmation: "foobar"}
-    assert_equal 1, ActionMailer::Base.deliveries.size
-    @user = assigns(:user)
-    assert_not @user.reload.activated?
-    get user_path(@user)
-    assert_redirected_to root_url
-  end
-
-  test "show page for non-activated users" do
-    get signup_path
-    post users_path, user: {name: "New User", email: "user@valid.com",
-                            password:              "foobar",
-                            password_confirmation: "foobar"}
-    assert_equal 1, ActionMailer::Base.deliveries.size
-    @user = assigns(:user)
-    get edit_account_activation_path(@user.activation_token, email: @user.email)
-    assert @user.reload.activated?
-    get user_path(@user)
-    assert_template "users/show"
-  end
-
-
 end
