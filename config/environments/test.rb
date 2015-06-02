@@ -21,7 +21,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
   
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { host: 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'rails-tutorial-jdvolturo23.c9.io' }
 
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
