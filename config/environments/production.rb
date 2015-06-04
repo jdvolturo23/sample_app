@@ -79,7 +79,7 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'http://rails-tutorial-jdvolturo23.c9.io'
+  host = 'https://fast-journey-6963.herokuapp.com/'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',

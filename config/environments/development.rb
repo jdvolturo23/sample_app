@@ -38,7 +38,7 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
-  host = 'rails-tutorial-jdvolturo23.c9.io'
+  host = 'https://rails-tutorial-jdvolturo23.c9.io/'
   config.action_mailer.default_url_options = { host: host }
   
   # Raises error for missing translations
