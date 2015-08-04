@@ -1,8 +1,8 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top  navbar-default">
   <div class="container">
     <%= link_to "pegasus", root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav nav-pills navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Leagues", leagues_path %></li>
         <li><%= link_to "Help", help_path %></li>
@@ -24,6 +24,7 @@
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
+        <li><%= link_to "Sign up now!", signup_path, class: "btn btn-sm btn-primary" %></li>
       </ul>
     </nav>
   </div>
