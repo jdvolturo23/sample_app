@@ -37,6 +37,15 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
+  # signs in through youtube/omiauth.
+  def from_omniauth(auth)
+    user = User.find_or_initialize_by(uid: auth['uid'])
+    user.name = auth['info']['name']
+    user.token = auth['credentials']['token']
+    user.save!
+    user
+  end
+
   # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)

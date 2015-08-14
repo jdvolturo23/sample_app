@@ -1,13 +1,26 @@
-<header class="navbar navbar-fixed-top  navbar-default">
+<header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "pegasus", root_path, id: "logo" %>
+    
     <nav>
+    
       <ul class="nav nav-pills navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Leagues", leagues_path %></li>
-        <li><%= link_to "Help", help_path %></li>
+       
+        <li><%= link_to 'Home', home_path %></li>
+        <li><%= link_to 'Videos', root_path %></li>
+        <li><%= link_to 'Add Video', new_video_path %></li>
+        <li><%= link_to 'Leagues', leagues_path %></li>
+        <li><%= link_to 'Help', help_path %></li>
+       
+        <% if current_user %>
+          <li><span><%= current_user.name %></span></li>
+          <li><%= link_to 'Log Out', logout_path, method: "delete" %></li>
+        <% else %>
+          <li><%= link_to 'Sign In', '/auth/google_oauth2' %></li>
+        <% end %>
+ 
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to 'Users', users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -24,8 +37,11 @@
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
-        <li><%= link_to "Sign up now!", signup_path, class: "btn btn-sm btn-primary" %></li>
+          <li><%= link_to "Sign up now!", signup_path, class: "btn btn-sm btn-primary" %></li>
+   
       </ul>
+      
     </nav>
+  
   </div>
 </header>

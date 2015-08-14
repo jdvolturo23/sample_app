@@ -9,6 +9,10 @@ class StaticPagesController < ApplicationController
 
   def leagues
   end
+  
+  def videos
+    @videos = Video.all
+  end
 
   def help
   end

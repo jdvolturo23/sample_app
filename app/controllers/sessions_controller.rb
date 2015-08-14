@@ -22,8 +22,19 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
-    log_out if logged_in?
+  def from_omniauth
+    user = User.from_omniauth(request.env['omniauth.auth'])
+    session[:user_id] = user.id
+    flash[:success] = "Welcome, #{user.name}"
     redirect_to root_url
   end
+
+
+  def destroy
+    log_out if logged_in?
+    session[:user_id] = nil
+    flash[:success] = "Goodbye!"
+    redirect_to root_url
+  end
+  
 end

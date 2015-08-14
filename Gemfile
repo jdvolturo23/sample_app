@@ -18,6 +18,14 @@ gem 'rails_autolink'
 gem 'jbuilder',     '2.2.3'
 gem 'sdoc',         '0.4.0', group: :doc
 
+# youTube gem files
+gem 'yt', '~> 0.13.7'
+gem 'autoprefixer-rails'
+gem 'rails-observers'
+gem 'omniauth-google-oauth2'
+gem 'active_type', '0.3.1'
+# youTube gem files
+
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
   gem 'byebug',      '3.4.0'
@@ -33,6 +41,6 @@ end
 
 group :production do
   gem 'pg',             '0.17.1' 
-  gem 'rails_12factor', '0.0.2', group: :production
+  gem 'rails_12factor', '0.0.2'
   gem 'puma',           '2.11.1'
 end
