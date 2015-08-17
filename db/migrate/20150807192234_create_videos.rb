@@ -1,12 +1,12 @@
 class CreateVideos < ActiveRecord::Migration
   def change
     create_table :videos do |t|
-      t.varchar :link
-      t.varchar :title
+      t.string :link
+      t.string :title
       t.datetime :published_at
       t.integer :likes
       t.integer :dislikes
-      t.varchar :uid
+      t.string :uid
 
       t.timestamps null: false
     end
