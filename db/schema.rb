@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150807192234) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "picture"
+    t.text   "picture"
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
@@ -39,31 +39,31 @@ ActiveRecord::Schema.define(version: 20150807192234) do
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "token"
-    t.string   "uid"
+    t.text   "name"
+    t.text   "email"
+    t.text   "token"
+    t.text   "uid"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.string   "password_digest"
-    t.string   "remember_digest"
+    t.text   "password_digest"
+    t.text   "remember_digest"
     t.boolean  "admin",             default: false
-    t.string   "activation_digest"
+    t.text   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
-    t.string   "reset_digest"
+    t.text   "reset_digest"
     t.datetime "reset_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
-    t.string   "link"
-    t.string   "title"
+    t.text   "link"
+    t.text   "title"
     t.datetime "published_at"
     t.integer  "likes"
     t.integer  "dislikes"
-    t.string   "uid"
+    t.text   "uid"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
