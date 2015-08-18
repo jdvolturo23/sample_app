@@ -17,10 +17,9 @@ test:
   password:
   
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: pegasus_production
-  template: template0
-  pool: 5
-  username: ubuntu
-  password:
+  adapter: postgresql  
+  host: ec2-23-21-96-129.compute-1.amazonaws.com      # HOST 
+  port: 5432                                          # Port  
+  database: dcbbsd77h1br53                            # Database Name  
+  username: rcpkpngixvoqeo                            # User Name  
+  password: '< password >'                            # Password 
