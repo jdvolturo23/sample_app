@@ -1,5 +1,5 @@
 class VideoUpload < ActiveType::Object
-    attribute :file, :string
+    attribute :file, :text
     attribute :title, :string
     attribute :description, :text
  

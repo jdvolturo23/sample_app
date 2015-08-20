@@ -3,13 +3,13 @@
 # Table name: videos
 #
 #  id           :integer          not null, primary key
-#  link         :string(255)
-#  title        :string(255)
+#  link         :text(255)
+#  title        :text(255)
 #  published_at :datetime
-#  duration     :string(255)
+#  duration     :text(255)
 #  likes        :integer
 #  dislikes     :integer
-#  uid          :string(255)
+#  uid          :text(255)
 #  created_at   :datetime
 #  updated_at   :datetime
 #
