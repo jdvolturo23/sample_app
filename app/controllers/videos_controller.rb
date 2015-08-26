@@ -17,6 +17,11 @@ class VideosController < ApplicationController
     end
   end
 
+  def destroy
+    Video.find(params[:id]).destroy
+    redirect_to root_url, :flash => { :success => "Video destroyed." }
+  end
+
   private
 
   def video_params

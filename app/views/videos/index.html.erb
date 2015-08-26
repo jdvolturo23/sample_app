@@ -1,17 +1,17 @@
 <% provide(:title, "Videos") %>
 
-
-<!--YouTube-->
+<!--YouTube
 
 <div class="jumbotron">
   <div class="container">
-    <h1>Share your videos with the world!</h1>
-    <p>Click the button below to share your video from YouTube.</p>
+    <p>Click the button below to share videos from YouTube.</p>
     <p>
-      <%= link_to 'Add video now!', new_video_path, class: 'btn btn-primary btn-lg' %>
+      <%# link_to 'Add video now!', new_video_path, class: 'btn btn-primary btn-lg' %>
     </p>
   </div>
 </div>
+
+YouTube-->
 
 <% if @videos.any? %>
   <div class="container">
@@ -36,6 +36,10 @@
                     <span class="glyphicon glyphicon glyphicon-thumbs-down"></span> <%= video.dislikes %>
                   </p>
                 </div>
+                <span>
+                <%= link_to "delete", video, method: :delete,
+                                             data: { confirm: "You sure?" } %>
+                </span>
               </div>
             </div>
           <% end %>
@@ -44,5 +48,3 @@
     <% end %>
   </div>
 <% end %>
-
-<!--YouTube-->

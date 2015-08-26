@@ -2,10 +2,14 @@
   <div class="container-fluid">
     <%= link_to "pegasus", root_path, id: "logo" %>
     <nav>
+      <ul class="nav navbar-nav navbar-left">
+      <li><button type="button" class="btn btn-default navbar-btn"><%= link_to 'Add video now!', new_video_path %></button></li>
+      </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Home', home_path %></li>
         <li><%= link_to 'Videos', root_path %></li>
-        <li><%= link_to 'Add Video', new_video_path %></li>
+        <li><%# link_to 'Add Video', new_video_path %></li>
         <li><%= link_to 'Leagues', leagues_path %></li>
         <li><%# link_to 'Help', help_path %></li>
       

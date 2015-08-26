@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get    'home'    => 'static_pages#home'
   get    'leagues' => 'static_pages#leagues'
   get    'help'    => 'static_pages#help'
-  get    'newvideos'    => 'static_pages#videos'
+  get    'newvideos'    => 'videos#new'
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
   get    'signup'  => 'users#new'
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
   get 'forgot password' => 'password_resets#new'
   get 'edit password' => 'password_resets#edit'
- 
+  
   get 'sign', to: 'sessions#from_omniauth'
   get 'auth/failure', to: redirect('/')
  
@@ -33,6 +33,6 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
-  resources :videos,              only: [:index, :new, :create]
+  resources :videos,              only: [:index, :new, :create, :destroy]
   resources :video_uploads,       only: [:new, :create]
 end
